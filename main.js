@@ -3,24 +3,29 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 // Jalankan dengan perintah npm run dev
+
+// Scene
 const scene = new THREE.Scene();
 
+//Camera
 const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 10000);
 camera.position.setZ(120);
 
+//render
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
 });
 // renderer.setClearColor(0xffffff);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize( window.innerWidth, window.innerHeight);
-
-
 renderer.render(scene, camera);
 
+
+// Geometry
 const geometry = new THREE.BoxGeometry(10,10,10);
 // const edges = new THREE.EdgesGeometry(geometry);
 
+// Material
 const material = new THREE.MeshBasicMaterial({color: 0xffffff});
 //const material = new THREE.MeshNormalMaterial({color:0xffffff});
 //const material = new THREE.MeshStandardMaterial({color:0xffffff});
@@ -42,6 +47,8 @@ const material = new THREE.MeshBasicMaterial({color: 0xffffff});
 // 	gapSize: 1,
 // } );
 
+
+// Mesh
 const cube = new THREE.Mesh(geometry, material);
 // const cube = new THREE.LineSegments(edges, material);
 // const cube = new THREE.LineSegments(edges, material);
@@ -50,7 +57,7 @@ scene.add(cube);
 
 
 
-//light (jika dibutuhkan)
+// Light 
 const pointLight = new THREE.PointLight(0xffffff, 0.5);
 pointLight.position.x = 10
 pointLight.position.y = 10
@@ -65,6 +72,7 @@ scene.add(pointLight, ambientLight);
 // scene.add(lightHelper, gridHelper);
 // scene.add(gridHelper);
 
+// Control
 const controls = new OrbitControls(camera, renderer.domElement);
 
 function animate() {
