@@ -36,7 +36,7 @@ const vertexShader = `
         gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
 `;
-
+//implementasikan teknik pemetaan tekstur yang kompleks, perhitungan matematis yang rumit, atau efek-efek grafis khusus dengan lebih detail.
 const fragmentShader = `
     precision mediump float;
     precision mediump int;
