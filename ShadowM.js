@@ -50,8 +50,8 @@ scene.add(gridHelper);
 
 const geometry = new THREE.BoxGeometry(10, 10, 10);
 
-const material2 = new THREE.ShadowMaterial({ doubleSided: true});
-material2.opacity = 1;
+const material2 = new THREE.ShadowMaterial({ side: THREE.DoubleSide});
+material2.opacity = 0.8;
 material2.color = new THREE.Color("rgb(4, 158, 244)");
 // material2.opacity = 1;
 const material3 = new THREE.MeshLambertMaterial({
