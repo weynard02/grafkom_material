@@ -1,13 +1,13 @@
 import "./style.css";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 // Buat shader code
-const vertexShader = `
-        void main() {
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `;
+// const vertexShader = `
+//         void main() {
+//           gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+//         }
+//       `;
 
 const fragmentShader = `
         uniform float time;
@@ -23,21 +23,21 @@ const fragmentShader = `
 
 // Buat material dengan ShaderMaterial
 const material = new THREE.ShaderMaterial({
-  vertexShader: vertexShader,
-  fragmentShader: fragmentShader,
-  uniforms: {
-    time: { value: 0.0 }, // Contoh uniform value time
-  },
+    vertexShader: THREE.ShaderLib.standard.vertexShader,
+    fragmentShader: fragmentShader,
+    uniforms: {
+        time: {value: 0.0}, // Contoh uniform value time
+    },
 });
 
 const scene = new THREE.Scene();
 // white background
 scene.background = new THREE.Color(0xffffff);
 const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
 );
 
 const renderer = new THREE.WebGLRenderer();
@@ -51,12 +51,12 @@ scene.add(cube);
 camera.position.z = 5;
 
 function animate() {
-  requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
 
-  // Update uniform value time
-  material.uniforms.time.value += 0.01;
+    // Update uniform value time
+    material.uniforms.time.value += 0.01;
 
-  renderer.render(scene, camera);
+    renderer.render(scene, camera);
 }
 
 animate();
